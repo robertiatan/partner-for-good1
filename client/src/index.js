@@ -4,9 +4,8 @@ import {
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-  setContext,
 } from "@apollo/client";
-// import { setContext } from '@apollo/client/link/context';
+import { setContext } from "@apollo/client/link/context";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
