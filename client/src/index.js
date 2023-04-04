@@ -1,34 +1,35 @@
-import React from 'react';
+import React from "react";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
-import { UserProvider } from './providers/userContext';
-import { MyCauseProvider } from './providers/myCauseContext';
+  setContext,
+} from "@apollo/client";
+// import { setContext } from '@apollo/client/link/context';
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import { UserProvider } from "./providers/userContext";
+import { MyCauseProvider } from "./providers/myCauseContext";
 
-import 'bootstrap/dist/css/bootstrap.min.css'
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   // return the headers to the context so httpLink can read them
   return {
-      headers: {
+    headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-      },
+      authorization: token ? `Bearer ${token}` : "",
+    },
   };
 });
 
@@ -37,16 +38,15 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <UserProvider>
         <MyCauseProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
         </MyCauseProvider>
       </UserProvider>
     </ApolloProvider>
