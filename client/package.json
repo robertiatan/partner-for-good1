@@ -1,5 +1,5 @@
 {
-  "name": "finalproject",
+  "name": "partner-for-good",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001",
@@ -21,7 +21,9 @@
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.9",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "dotenv": "^16.0.3",
+    "pretty": "^2.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
